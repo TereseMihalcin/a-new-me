@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# obsidian
+.obsidian/
+
+# for moving shit around
+.trash/
