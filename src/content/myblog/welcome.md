@@ -16,3 +16,5 @@ Also , I should probably stop writing each sentence like it's a paragraph. Also,
 Make a note of something or try [my stupid current site](https://teresemihalcin.com)!
 
 When you're ready, delete this note and make the vault your own.
+
+new stuff
