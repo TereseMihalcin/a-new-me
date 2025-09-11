@@ -19,11 +19,12 @@ const posts = (await getCollection('myblog')).sort(
 		<style>
 			main {
 				width: 960px;
+				/* background: lightblue; */
 			}
 			ul {
 				display: flex;
 				flex-wrap: wrap;
-				gap: 2rem;
+				justify-content: center;
 				list-style-type: none;
 				margin: 0;
 				padding: 0;
@@ -33,16 +34,15 @@ const posts = (await getCollection('myblog')).sort(
 			}
 			ul li {
 				display: flex;
+				padding: 15px;
+				border-bottom: solid black 1px;
 			}
 			ul a * {
 				transition: 0.2s ease;
 			}
-			ul li:first-child {
+			ul li {
 				width: 100%;
-				margin-bottom: 1rem;
-			}
-			ul li:first-child img {
-				width: 50%;
+				gap: 20px;
 			}
 			ul li:first-child .title {
 				font-size: 2.369rem;
@@ -53,6 +53,9 @@ const posts = (await getCollection('myblog')).sort(
 			}
 			ul li a {
 				display: block;
+			}
+			.image {
+				max-width: 12%;
 			}
 			.title {
 				margin: 0;
@@ -66,6 +69,13 @@ const posts = (await getCollection('myblog')).sort(
 			.desc {
 				margin: 0;
 				color: rgb(var(--gray-dark));
+			}
+			.text-fade {
+				opacity: 50%;
+				background-color: linear-gradient(var(--gray-gradient)) no-repeat;
+				position: relative;
+				right: 60px;
+				padding: 20px 40px;
 			}
 			ul a:hover li h4 {
 				color: rgb(var(--accent));
@@ -92,9 +102,9 @@ const posts = (await getCollection('myblog')).sort(
 						posts.map((post) => (
 						<a href={`/myblog/${post.id}/`}>
 							<li>
-								<div class="imaage">
+								<div class="image">
 									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+										<Image src={post.data.heroImage} alt="" />
 									)}
 								</div>
 								<div class="data">
@@ -102,9 +112,10 @@ const posts = (await getCollection('myblog')).sort(
 										<FormattedDate date={post.data.pubDate} />
 									</p>
 									<h4 class="title">{post.data.title}</h4>
-									<p class="desc">
-										{post.data.description}
-									</p>
+									<div class="d-flex">
+										<p class="desc">{post.data.description}</p>
+										<p class="text-fadeno"></p>
+									</div>
 								</div>
 							</li>
 						</a>
