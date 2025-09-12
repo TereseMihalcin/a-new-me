@@ -13,8 +13,4 @@ Maybe that's what my first post should be about.
 
 Also , I should probably stop writing each sentence like it's a paragraph. Also, I shouldn't have done this during work hours but here we are.
 
-Make a note of something or try [my stupid current site](https://teresemihalcin.com)!
-
-When you're ready, delete this note and make the vault your own.
-
-new stuff
+[my stupid current site](https://teresemihalcin.com)!
