@@ -4,7 +4,7 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 
 const allBlogPosts = await getCollection('myblog');
-const welcomePost = await getEntry('myblog', 'welcome');
+const welcomePost = await getEntry('myblog', 'test-post');
 
 const posts = (await getCollection('myblog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
