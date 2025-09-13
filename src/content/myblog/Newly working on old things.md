@@ -1,5 +1,5 @@
 ---
-title: Newly working on old things
+title: New work on old things
 description: Thoughts about working on old code at my day job
 pubDate: Sept 11 2025
 heroImage: ../../assets/blog2.png
