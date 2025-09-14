@@ -4,8 +4,11 @@ const today = new Date();
 
 <footer>
 	&copy; {today.getFullYear()} Terese Mihalcin. All rights reserved.
+	<p>
+		<a href="mailto:dev@teresemihalcin.com">dev@teresemihalcin.com</a>
+	</p>
 	<div class="social-links">
-		<a href="https://mastodon.social/@teresemihalcino" target="_blank">
+		<a href="https://mastodon.social/@teresemihalcin" target="_blank">
 			<span class="sr-only">Follow Astro on Mastodon</span>
 			<svg
 				viewBox="0 0 16 16"
@@ -40,6 +43,10 @@ const today = new Date();
 		background: #e9dd65;
 		color: rgb(var(--gray));
 		text-align: center;
+	}
+	p a{
+		color: rgb(var(--gray));
+		text-decoration: none;
 	}
 	.social-links {
 		display: flex;
