@@ -7,10 +7,10 @@
 :root {
 	--accent: #ca70c8ff;
 	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
+	--black: rgb(15, 18, 25);
+	--gray: rgb(96, 115, 159);
+	--gray-light: rgb(229, 233, 240);
+	--gray-dark: rgb(34, 41, 57);
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
 	--gold: #cfb112ff;
 	--cream: #f9f6cc;
@@ -47,7 +47,7 @@ body {
 }
 main {
 	width: 720px;
-	max-width: calc(100% - 2em);
+	max-width: 100%;
 	margin: auto;
 	padding: 3em 1em;
 }

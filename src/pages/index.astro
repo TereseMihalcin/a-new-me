@@ -21,11 +21,16 @@ const posts = (await getCollection('blog')).sort(
 				width: 960px;
 				/* background: lightblue; */
 			}
+			h1 {
+				color: var(--gray);
+				text-decoration: underline;
+				text-decoration-style: double;
+			}
 			ul {
 				list-style-type: none;
 				margin: 0;
-				padding-left: 20px;
-  				padding-right: 20px;
+				padding-left: 0px;
+  				padding-right: 0px;
 			}
 			a {
 				text-decoration: none;
@@ -57,16 +62,16 @@ const posts = (await getCollection('blog')).sort(
 			}
 			.title {
 				margin: 0;
-				color: rgb(var(--black));
+				color: var(--black);
 				line-height: 1;
 			}
 			.date {
 				margin: 0;
-				color: rgb(var(--gray));
+				color: var(--gray);
 			}
 			.desc {
 				margin: 0;
-				color: rgb(var(--gray-dark));
+				color: var(--gray-dark);
 			}
 			.text-fade {
 				opacity: 50%;
@@ -76,7 +81,7 @@ const posts = (await getCollection('blog')).sort(
 				padding: 20px 40px;
 			}
 			ul a:hover li h4 {
-				color: rgb(var(--accent));
+				color: var(--accent);
 			}
 			ul a:hover img {
 				/* box-shadow: var(--box-shadow); */
@@ -88,6 +93,9 @@ const posts = (await getCollection('blog')).sort(
 				ul a li {
 					width: 100%;
 				}
+				.title {
+					font-size: 1.6em;
+				}
 			}
 		</style>
 	</head>
@@ -95,6 +103,7 @@ const posts = (await getCollection('blog')).sort(
 		<Header />
 		<main>
 			<section>
+				<h1 class="mb-4">My Posts:</h1>
 				<ul>
 					{
 						posts.map((post) => (
