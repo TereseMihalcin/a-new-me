@@ -13,6 +13,7 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
+			categories: z.array(z.string()).optional(),
 		}),
 });
 
@@ -28,6 +29,7 @@ const myblog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
+			categories: z.array(z.string()).optional(),
 		}),
 });
 
