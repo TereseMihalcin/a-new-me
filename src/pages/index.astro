@@ -1,22 +1,126 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 960px;
+				/* background: lightblue; */
+			}
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding-left: 20px;
+  				padding-right: 20px;
+			}
+			a {
+				text-decoration: none;
+			}
+			ul li {
+				display: flex;
+				padding: 15px;
+				border-bottom: solid black 1px;
+			}
+			ul a * {
+				transition: 0.2s ease;
+			}
+			ul li {
+				width: 100%;
+				gap: 20px;
+			}
+			ul li:first-child .title {
+				font-size: 2.369rem;
+			}
+			ul li img {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+			}
+			.image {
+				max-width: 12%;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			.desc {
+				margin: 0;
+				color: rgb(var(--gray-dark));
+			}
+			.text-fade {
+				opacity: 50%;
+				background-color: linear-gradient(var(--gray-gradient)) no-repeat;
+				position: relative;
+				right: 60px;
+				padding: 20px 40px;
+			}
+			ul a:hover li h4 {
+				color: rgb(var(--accent));
+			}
+			ul a:hover img {
+				/* box-shadow: var(--box-shadow); */
+			}
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul a li {
+					width: 100%;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>I'm Terese!</h1>
-			<p>I'm attempting a blog ＼(ﾟ ｰﾟ＼). There won't be much here except occasional layout/style changes. Maybe i'll make some posts soon if I feel like it.</p>
-			<p>AI makes me sad.</p>
-			<p>My plan is to make unfortunate pixel images on <a href="https://www.piskelapp.com/p/create/sprite/" target="_new">Piskell</a> for each post, unless I find a more relevant image</p>
+			<section>
+				<ul>
+					{
+						posts.map((post) => (
+						<a href={`/blog/${post.id}/`}>
+							<li>
+								<div class="image">
+									{post.data.heroImage && (
+										<Image src={post.data.heroImage} alt="" />
+									)}
+								</div>
+								<div class="data">
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+									<h4 class="title">{post.data.title}</h4>
+									<div class="d-flex">
+										<p class="desc">{post.data.description}</p>
+										<p class="text-fadeno"></p>
+									</div>
+								</div>
+							</li>
+						</a>
+						))
+					}
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>
