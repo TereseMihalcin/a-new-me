@@ -3,7 +3,10 @@ title: New work on old things
 description: Thoughts about working on old code at my day job
 pubDate: Sept 11 2025
 heroImage: ../../assets/blog2.png
-categories: [Dev,College,Learning]
+categories:
+  - Dev
+  - College
+  - Learning
 ---
 
 Of course there's a lot I could say about my current job, good and less so. I accepted the position out of college knowing that tech hiring was starting to become a wasteland. I don't regret it. I had literally no experience, so my desperation was high I know it showed. All I wanted was to touch some code, not mine, someone else's, no matter the cost. And I needed that dough, at least a little bit, which is about what I got.
