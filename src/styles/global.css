@@ -5,7 +5,7 @@
  */
 
 :root {
-	--accent: #ca70c8ff;
+	--accent: #99609f;
 	--accent-dark: #000d8a;
 	--black: rgb(15, 18, 25);
 	--gray: rgb(96, 115, 159);
@@ -63,7 +63,7 @@ h6 {
 	font-weight: 600;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 3em;
 }
 h2 {
 	font-size: 2.441em;
