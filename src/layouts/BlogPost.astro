@@ -20,13 +20,6 @@ const { title, description, pubDate, updatedDate, heroImage, categories } = Astr
 				max-width: 100%;
 				margin: 0;
 			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-			}
 			.prose {
 				width: 720px;
 				max-width: calc(100% - 1em);
@@ -38,14 +31,13 @@ const { title, description, pubDate, updatedDate, heroImage, categories } = Astr
 				line-height: 1;
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
+				font-size: 2em;
+				margin-bottom: 0px;
 			}
-			.date {
+			.date .pubdate{
 				margin-bottom: 0.5em;
 				color: var(--gray);
-			}
-			.last-updated-on {
-				font-style: italic;
+				font-size: 1rem;
 			}
 		</style>
 	</head>
@@ -54,22 +46,21 @@ const { title, description, pubDate, updatedDate, heroImage, categories } = Astr
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={256} height={256} src={heroImage} alt="" />}
-				</div>
+				
 				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+					<div class="container d-flex gap-3 align-items-end p-0 mb-3">
+						<div class="col-2 hero-image">
+							{heroImage && <Image width={256} src={heroImage} alt="" />}
 						</div>
-						<h1>{title}</h1>
+						<div class="col-10 title">
+							<div class="date">
+								<div class="pubdate">
+									<FormattedDate date={pubDate} />
+								</div>
+								<h1>{title}</h1>
+							</div>
+							
+						</div>
 					</div>
 					<slot />
 					<div class="categories">
