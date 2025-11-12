@@ -60,3 +60,9 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+
+## ToDo
+
+category pages
+interesting url for state management [article](https://alfy.blog/2025/10/31/your-url-is-your-state.html?utm_source=the-index&utm_medium=newsletter) for reference 
+
