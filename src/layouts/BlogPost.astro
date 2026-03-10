@@ -67,9 +67,11 @@ const { title, description, pubDate, updatedDate, heroImage, categories } = Astr
 						{categories && categories.length > 0 && (
 							<div>
 								{categories.map((category,) => (
-									<button class="btn btn-light me-2 border border-secondary-subtle border-2">
-										{category}
-									</button>
+									<a href={`/category/${category}`}>
+										<button class="btn btn-light me-2 border border-secondary-subtle border-2">
+											{category}
+										</button>
+									</a>
 								))}
 							</div>
 						)}

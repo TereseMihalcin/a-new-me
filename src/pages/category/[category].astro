@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('blog');
+    const categories = new Set();
+    
+    posts.forEach(post => {
+        const postCategories = post.data.categories || ['Uncategorized'];
+        postCategories.forEach(cat => categories.add(cat));
+    });
+    
+    return Array.from(categories).map(category => ({
+        params: { category },
+        props: { category }
+    }));
+}
+
+const { category } = Astro.props;
+const cat: string = category as string;
+const allPosts = await getCollection('blog');
+const posts = allPosts
+    .filter(post => {
+        const postCategories = post.data.categories || ['Uncategorized'];
+        return postCategories.includes(cat);
+    })
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={`${category} - ${SITE_TITLE}`} description={`Posts about ${category}`} />
+        <style>
+            /* Reuse styles from index.astro */
+            main {
+				width: 960px;
+				/* background: lightblue; */
+			}
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding-left: 0px;
+            }
+            a {
+                text-decoration: none;
+            }
+            ul li {
+                display: flex;
+                padding: 15px;
+                border-bottom: solid black 1px;
+                gap: 20px;
+                width: 100%;
+            }
+            .image {
+                max-width: 12%;
+            }
+            .title {
+                margin: 0;
+                color: var(--black);
+                line-height: 1;
+            }
+            .date {
+                margin: 0;
+                color: var(--gray);
+            }
+        </style>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <section>
+                <h1>{category}</h1>
+                <!-- <p>{posts.length} post{posts.length !== 1 ? 's' : ''}</p> -->
+                <ul>
+                    {posts.map((post) => (
+                        <a href={`/blog/${post.id}/`}>
+                            <li>
+                                <div class="d-flex align-items-center image">
+                                    {post.data.heroImage && (
+                                        <Image src={post.data.heroImage} alt="" />
+                                    )}
+                                </div>
+                                <div class="data">
+                                    <p class="date">
+                                        <FormattedDate date={post.data.pubDate} />
+                                    </p>
+                                    <h4 class="title">{post.data.title}</h4>
+                                    <p>{post.data.description}</p>
+                                </div>
+                            </li>
+                        </a>
+                    ))}
+                </ul>
+            </section>
+        </main>
+        <Footer />
+    </body>
+</html>

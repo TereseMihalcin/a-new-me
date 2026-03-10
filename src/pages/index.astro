@@ -10,6 +10,21 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+// Group posts by category
+const postsByCategory = posts.reduce((acc, post) => {
+    const categories = post.data.categories || ['Uncategorized'];
+    categories.forEach(category => {
+        if (!acc[category]) {
+            acc[category] = [];
+        }
+        acc[category].push(post);
+    });
+    return acc;
+}, {} as Record<string, typeof posts>);
+
+// Sort categories alphabetically
+const sortedCategories = Object.keys(postsByCategory).sort();
 ---
 
 <!doctype html>
@@ -23,8 +38,6 @@ const posts = (await getCollection('blog')).sort(
 			}
 			h1 {
 				color: var(--gray);
-				text-decoration: underline;
-				text-decoration-style: dashed;
 			}
 			ul {
 				list-style-type: none;
