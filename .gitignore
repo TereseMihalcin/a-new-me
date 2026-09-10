@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # for moving shit around
 .trash/
+
+# Local Netlify folder
+.netlify
